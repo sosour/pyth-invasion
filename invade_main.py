@@ -3,7 +3,7 @@ import sys
 
 from settings import Settings
 from sloth import Sloth
-
+import gfunctions as gf
 
 def run_game():
     pygame.init()
@@ -14,13 +14,9 @@ def run_game():
     sloth = Sloth(screen)
 
     while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        gf.check_events()
         
-        screen.fill(ai_settings.bg_color)
-        sloth.blitme()
+        gf.update_screen(ai_settings, screen, sloth)
 
-        pygame.display.flip()
 
 run_game()
